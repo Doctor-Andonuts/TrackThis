@@ -49,12 +49,15 @@ public class MainActivity extends AppCompatActivity
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.setDrawerListener(actionBarDrawerToggle);
+                this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        assert getSupportActionBar() != null;
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 // THIS WAS JUST TEST CODE TO SHOW COUCH DATABASE WORKING
 //        final String TAG = "HelloWorld";
@@ -162,7 +165,6 @@ public class MainActivity extends AppCompatActivity
         } else if (createTracker != null && createTracker.isVisible()) {
             FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
             fab.show();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             getSupportActionBar().setTitle(R.string.app_name);
             setDrawerState(true);
             super.onBackPressed();
@@ -184,6 +186,24 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        CreateTracker createTracker = (CreateTracker) fragmentManager.findFragmentByTag("CreateTrackerFragment");
+
+        if (id == android.R.id.home) {
+            if (createTracker == null || !createTracker.isVisible()) {
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+            }
+            return false;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void setDrawerState(boolean isEnabled) {
