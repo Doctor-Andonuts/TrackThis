@@ -2,17 +2,15 @@ package com.doctorandonuts.trackthis;
 
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 
-public class CreateTracker extends Fragment {
+public class ListTracker extends Fragment {
 
-    public CreateTracker() {
+    public ListTracker() {
         // Required empty public constructor
     }
 
@@ -39,6 +37,6 @@ public class CreateTracker extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_tracker, container, false);
+        return inflater.inflate(R.layout.fragment_list_tracker, container, false);
     }
 }

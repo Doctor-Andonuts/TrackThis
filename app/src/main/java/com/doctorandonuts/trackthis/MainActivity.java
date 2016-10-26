@@ -25,28 +25,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CreateTracker createTracker = new CreateTracker();
-                // Sets the back stack to nothing, so when I back it will go back to main list screen.
-                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                getFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.content_main, createTracker, "CreateTrackerFragment")
-                        .addToBackStack(null)
-                        .commit();
-                setDrawerState(false);
-                FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-                fab.hide();
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setTitle("Create New Tracker");
-            }
-        });
-
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(
                 this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -58,6 +36,28 @@ public class MainActivity extends AppCompatActivity
 
         assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        loadRootView();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                ListTracker listTracker = new ListTracker();
+//                // Sets the back stack to nothing, so when I back it will go back to main list screen.
+//                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+//                getFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.content_main, listTracker, "ListTrackerFragment")
+//                        .addToBackStack(null)
+//                        .commit();
+//                setDrawerState(false);
+//                FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//                fab.hide();
+//                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//                getSupportActionBar().setTitle("Create New Tracker");
+            }
+        });
 
 // THIS WAS JUST TEST CODE TO SHOW COUCH DATABASE WORKING
 //        final String TAG = "HelloWorld";
@@ -152,22 +152,12 @@ public class MainActivity extends AppCompatActivity
 //
 //        Log.d(TAG, "End Hello World App");
 
-
     }
 
     @Override
     public void onBackPressed() {
-        FragmentManager fragmentManager = getFragmentManager();
-        CreateTracker createTracker = (CreateTracker) fragmentManager.findFragmentByTag("CreateTrackerFragment");
-
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else if (createTracker != null && createTracker.isVisible()) {
-            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-            fab.show();
-            getSupportActionBar().setTitle(R.string.app_name);
-            setDrawerState(true);
-            super.onBackPressed();
         } else {
             super.onBackPressed();
         }
@@ -179,9 +169,7 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_settings) {
-
-        }
+        if (id == R.id.nav_settings) {}
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -192,15 +180,13 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        CreateTracker createTracker = (CreateTracker) fragmentManager.findFragmentByTag("CreateTrackerFragment");
+        ListTracker listTracker = (ListTracker) getFragmentManager().findFragmentByTag("ListTrackerFragment");
 
-        if (id == android.R.id.home) {
-            if (createTracker == null || !createTracker.isVisible()) {
+        if (id == android.R.id.home) { /** main button on top left, typically hamburger menu or back arrow **/
+            if (listTracker != null && listTracker.isVisible()) {
                 drawerLayout.openDrawer(GravityCompat.START);
-                return true;
+                return true; /** Consumes event, not letting it eventually go to the "onBackPress" **/
             }
-            return false;
         }
 
         return super.onOptionsItemSelected(item);
@@ -218,5 +204,17 @@ public class MainActivity extends AppCompatActivity
             actionBarDrawerToggle.setDrawerIndicatorEnabled(false);
             actionBarDrawerToggle.syncState();
         }
+    }
+
+    private void loadRootView() {
+        ListTracker listTracker = new ListTracker();
+        getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); /** Sets the back stack to nothing, so when I back it will go back to main list screen. **/
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.content_main, listTracker, "ListTrackerFragment")
+                .commit();
+        setDrawerState(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.app_name);
     }
 }
