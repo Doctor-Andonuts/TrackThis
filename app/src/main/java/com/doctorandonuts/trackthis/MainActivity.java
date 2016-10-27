@@ -1,8 +1,11 @@
 package com.doctorandonuts.trackthis;
 
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +14,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,25 +44,6 @@ public class MainActivity extends AppCompatActivity
 
         loadRootView();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                ListTracker listTracker = new ListTracker();
-//                // Sets the back stack to nothing, so when I back it will go back to main list screen.
-//                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-//                getFragmentManager()
-//                        .beginTransaction()
-//                        .replace(R.id.content_main, listTracker, "ListTrackerFragment")
-//                        .addToBackStack(null)
-//                        .commit();
-//                setDrawerState(false);
-//                FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//                fab.hide();
-//                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//                getSupportActionBar().setTitle("Create New Tracker");
-            }
-        });
 
 // THIS WAS JUST TEST CODE TO SHOW COUCH DATABASE WORKING
 //        final String TAG = "HelloWorld";
