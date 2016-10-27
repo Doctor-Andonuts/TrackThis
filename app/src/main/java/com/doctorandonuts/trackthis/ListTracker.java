@@ -39,6 +39,8 @@ public class ListTracker extends Fragment {
                     }
                 });
 
+                builder.setView(R.layout.create_tracker);
+
                 AlertDialog alert = builder.create();
                 alert.show();
 
