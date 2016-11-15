@@ -2,19 +2,30 @@ package com.doctorandonuts.trackthis;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+
+import com.couchbase.lite.CouchbaseLiteException;
+import com.couchbase.lite.Database;
+import com.couchbase.lite.Manager;
+import com.couchbase.lite.android.AndroidContext;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private String testOne;
+    public String testTwo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,37 +50,14 @@ public class MainActivity extends AppCompatActivity
 
 
 // THIS WAS JUST TEST CODE TO SHOW COUCH DATABASE WORKING
-//        final String TAG = "HelloWorld";
-//        Log.d(TAG, "Begin Hello World App");
-//
-//        // create a manager
-//        Manager manager;
-//        try {
-//            manager = new Manager(new AndroidContext(this), Manager.DEFAULT_OPTIONS);
-//            Log.d (TAG, "Manager created");
-//        } catch (IOException e) {
-//            Log.e(TAG, "Cannot create manager object");
-//            return;
-//        }
-//
-//        // create a name for the database and make sure the name is legal
-//        String dbname = "hello";
-//        if (!Manager.isValidDatabaseName(dbname)) {
-//            Log.e(TAG, "Bad database name");
-//            return;
-//        }
-//
-//        // create a new database
-//        Database database;
-//        try {
-//            database = manager.getDatabase(dbname);
-//            Log.d (TAG, "Database created");
-//
-//        } catch (CouchbaseLiteException e) {
-//            Log.e(TAG, "Cannot get database");
-//            return;
-//        }
-//
+/** TODO(jason): Should I just put this little bit of code anywhere I need to access the DB instead of
+ * trying to access it out of the MainActivity. And if that is the case, maybe I make a quick little class. */
+
+
+
+
+
+
 //        // get the current date and time
 //        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 //        Calendar calendar = GregorianCalendar.getInstance();

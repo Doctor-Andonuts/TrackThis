@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.couchbase.lite.Database;
+
 
 public class ListTracker extends Fragment {
 
@@ -36,6 +38,8 @@ public class ListTracker extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(getActivity(), "I did nothing yet", Toast.LENGTH_SHORT).show();
+
+                        Database myDatabase = new MyDatabase(getContext()).getDatabase();
                     }
                 });
 
