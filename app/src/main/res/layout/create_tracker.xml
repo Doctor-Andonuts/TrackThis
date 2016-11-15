@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/create_tracker_type"
             android:entries="@array/tracker_types"
-            android:spinnerMode="dropdown">
+            android:spinnerMode="dialog"> <!-- Work AVD crashed if this was on dropdown -->
         </Spinner>
 
     </LinearLayout>

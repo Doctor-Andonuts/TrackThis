@@ -1,8 +1,8 @@
 package com.doctorandonuts.trackthis;
 
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -44,6 +44,7 @@ public class ListTracker extends Fragment {
                 AlertDialog alert = builder.create();
                 alert.show();
 
+/** NOTES(jason): Handling navigation between fragments, Not needed now but wanted to keep for reference later **/
 //                ListTracker listTracker = new ListTracker();
 //                // Sets the back stack to nothing, so when I back it will go back to main list screen.
 //                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -57,6 +58,7 @@ public class ListTracker extends Fragment {
 //                fab.hide();
 //                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //                getSupportActionBar().setTitle("Create New Tracker");
+
             }
         });
     }
