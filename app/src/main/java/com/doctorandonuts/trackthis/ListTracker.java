@@ -44,6 +44,8 @@ public class ListTracker extends Fragment {
                 AlertDialog alert = builder.create();
                 alert.show();
 
+                /** I am using a alert box instead of a whole new fragment, but I am keeping this as
+                 *  a reference for making new fragments with backstacks **/
 //                ListTracker listTracker = new ListTracker();
 //                // Sets the back stack to nothing, so when I back it will go back to main list screen.
 //                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
