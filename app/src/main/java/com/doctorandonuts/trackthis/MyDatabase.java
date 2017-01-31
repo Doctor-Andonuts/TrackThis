@@ -20,6 +20,7 @@ public class MyDatabase {
     public MyDatabase(android.content.Context context) {
         final String TAG = "CouchDB";
 
+
         /** Create a manager */
         Manager manager;
         try {
@@ -37,7 +38,7 @@ public class MyDatabase {
             return;
         }
 
-        /** create a new database */
+        /** create a new database or get it if it already exists */
         try {
             myDatabase = manager.getDatabase(dbname);
             Log.d (TAG, "MyDatabase created");

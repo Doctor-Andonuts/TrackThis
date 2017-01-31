@@ -5,13 +5,19 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Database;
+import com.couchbase.lite.Document;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ListTracker extends Fragment {
@@ -37,9 +43,23 @@ public class ListTracker extends Fragment {
                 builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), "I did nothing yet", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), String.valueOf(i), Toast.LENGTH_SHORT).show();
 
-                        Database myDatabase = new MyDatabase(getContext()).getDatabase();
+
+//                        Database myDatabase = new MyDatabase(getContext()).getDatabase();
+//                        myDatabase.getExistingDocument()
+//                        // create an empty document
+//                        Document document = myDatabase.createDocument();
+//
+//                        Map<String, Object> docContent = new HashMap<>();
+//                        docContent.put("message", "Hello Couchbase Lite");
+//
+//                        try {
+//                            document.putProperties(docContent);
+//                            Log.d ("CouchDB", "Document with ID = " + document.getId());
+//                        } catch (CouchbaseLiteException e) {
+//                            Log.e("CouchDB", "Cannot write document to database", e);
+//                        }
                     }
                 });
 
