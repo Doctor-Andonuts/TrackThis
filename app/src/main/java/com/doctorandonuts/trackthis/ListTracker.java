@@ -46,7 +46,8 @@ public class ListTracker extends Fragment {
                         Toast.makeText(getActivity(), String.valueOf(i), Toast.LENGTH_SHORT).show();
 
 
-//                        Database myDatabase = new MyDatabase(getContext()).getDatabase();
+                        Database myDatabase = new MyDatabase(getContext()).getDatabase();
+
 //                        myDatabase.getExistingDocument()
 //                        // create an empty document
 //                        Document document = myDatabase.createDocument();
